@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="shortcut icon" href="" type="https://media.discordapp.net/attachments/767485519599894558/775954209203945472/Team_Solexa.png?width=589&height=589">
+	<title>Quantm By Solexa</title>
+</head>
+
+<body>
+    <div>
+    <div class="main_content">
+       <div class="title">
+    <h1>Welcome</h1><svg class="cloud" viewBox="0 0 288 288"><path d="M240,83.15 C240,67.9000518 233.941982,53.2747018 223.15864,42.4913601 C212.375298,31.7080183 197.749948,25.65 182.5,25.65 L172.75,25.65 C154.378056,4.02009137 124.764588,-4.37699211 97.7734336,4.38992756 C70.7822797,13.1568472 51.7552353,37.3527169 49.6,65.65 L37.5500008,65.65 C16.8393222,65.6500004 0.0500007903,82.4393222 0.0500007903,103.15 C0.0500007903,123.860678 16.8393222,140.65 37.5500008,140.65 L182.550001,140.65 C214.286845,140.622403 240,114.886857 240,83.15 Z" fill="currentColor" stroke="currentColor" stroke-width="10" transform="translate(24.000000, 74.000000)"></path></svg>
+    <svg
+        class="cloud" viewBox="0 0 288 288">
+        <path d="M240,83.15 C240,67.9000518 233.941982,53.2747018 223.15864,42.4913601 C212.375298,31.7080183 197.749948,25.65 182.5,25.65 L172.75,25.65 C154.378056,4.02009137 124.764588,-4.37699211 97.7734336,4.38992756 C70.7822797,13.1568472 51.7552353,37.3527169 49.6,65.65 L37.5500008,65.65 C16.8393222,65.6500004 0.0500007903,82.4393222 0.0500007903,103.15 C0.0500007903,123.860678 16.8393222,140.65 37.5500008,140.65 L182.550001,140.65 C214.286845,140.622403 240,114.886857 240,83.15 Z"
+            fill="currentColor" stroke="currentColor" stroke-width="10" transform="translate(24.000000, 74.000000)"></path>
+        </svg><svg class="sun" viewBox="0 0 288 288"><g stroke="currentColor" stroke-width="9.6" fill="currentColor"><path d="M144,0 L144,48"></path><path d="M144,240 L144,288"></path><path d="M0,144 L48,144"></path><path d="M211.872,76.128 L245.808,42.192"></path><path d="M245.808,245.808 L211.872,211.872"></path><path d="M76.128,76.128 L42.192,42.192"></path><circle cx="144" cy="144" r="76.8"></circle><path d="M76.128,211.872 L42.192,245.808"></path><path d="M240,144 L288,144"></path></g></svg>
+        <svg
+            class="moon" viewBox="0 0 288 288">
+            <path d="M179.96,168.022222 C151.700526,168.120517 124.564785,156.963322 104.547537,137.015458 C84.5302886,117.067593 73.2789402,89.970756 73.2791111,61.7111111 C73.262672,39.5800913 80.2168326,18.0060212 93.1546667,0.0506666667 C43.2613654,7.97764254 5.29880783,49.0607811 1.32976665,99.4237156 C-2.63927452,149.78665 28.4191821,196.30925 76.4548335,211.953887 C124.490485,227.598524 176.989485,208.289587 203.440889,165.248889 C195.741394,167.043542 187.865735,167.973738 179.96,168.022222 Z"
+                transform="translate(42.000000, 35.000000)" stroke="currentColor" stroke-width="9.24444444" fill="currentColor" stroke-linejoin="bevel"></path>
+            </svg>
+            <div class="stars">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+</div>
+<div class="add"></div>
+<style>
+ html {
+	 font-family: 'Inter', sans-serif;
+	 overflow-x: hidden;
+	 -webkit-font-smoothing: antialiased;
+}
+ body {
+	 margin: 0;
+}
+ .title {
+	 width: 100%;
+	 height: 100vh;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 background: #2d89ff;
+	 color: white;
+	 overflow: hidden;
+	 position: relative;
+	 transition: 0.2s, 0s color;
+	 cursor: pointer;
+}
+ .title h1 {
+	 margin: 0;
+	 font-size: 35px;
+	 line-height: 1.1em;
+	 letter-spacing: -0.035em;
+	 font-weight: 600;
+	 transition: 0.2s ease;
+}
+ .cloud {
+	 height: 127px;
+	 position: absolute;
+	 right: -44px;
+	 margin-top: 96vh;
+}
+ .cloud:nth-of-type(2) {
+	 top: -55px;
+	 left: -58px;
+	 right: auto;
+	 margin: 0;
+}
+ .sun {
+	 height: 127px;
+	 position: absolute;
+	 top: -46px;
+	 left: -50px;
+	 color: #fad964;
+	 opacity: 0;
+}
+ .moon {
+	 height: 80px;
+	 position: absolute;
+	 top: 25px;
+	 left: 23px;
+	 color: #fad964;
+	 opacity: 0;
+}
+ .stars {
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 top: 0;
+	 left: 0;
+	 opacity: 0;
+}
+ .star {
+	 width: 10px;
+	 height: 10px;
+	 background: white;
+	 border-radius: 50%;
+	 position: relative;
+	 top: 78%;
+	 left: 16%;
+	 opacity: 0.5;
+	 animation: star 2s infinite;
+}
+ .star:nth-of-type(2) {
+	 top: 24%;
+	 left: 84%;
+	 opacity: 0.3;
+	 animation-delay: 1.5s;
+}
+ .star.star:nth-of-type(3) {
+	 top: 8%;
+	 left: 40%;
+	 opacity: 0.7;
+	 animation-delay: 1s;
+}
+ .title.morning {
+	 /*background: #ffc847;*/
+   background: #ADD8E6;
+}
+ .title.morning .cloud:nth-of-type(1) {
+	 right: -41px;
+	 left: auto;
+	 top: -52px;
+	 margin: 0;
+}
+ .title.morning .sun {
+	 margin-top: 122vh;
+	 left: calc(50% - 86px);
+	 height: 174px;
+	 top: auto;
+	 color: inherit;
+	 opacity: 1;
+}
+ .title.noon .cloud:nth-of-type(2) {
+	 right: 68px;
+	 left: auto;
+}
+ .title.noon .sun {
+	 opacity: 1;
+}
+ .title.night {
+	 background: #131c21;
+}
+ .title.night .cloud {
+	 opacity: 0.2;
+}
+ .title.night .cloud:nth-of-type(2) {
+	 right: 68px;
+	 left: auto;
+}
+ .title.night .moon {
+	 opacity: 1;
+}
+ .title.night .stars {
+	 opacity: 1;
+}
+ @keyframes star {
+	 50% {
+		 transform: scale(0);
+	}
+}
+</style>
+
+<script>
+
+  var title = document.querySelector('.title');
+var h1 = document.querySelector('.title h1');
+
+var today = new Date();
+var curHr = today.getHours();
+
+if (curHr < 12) {
+  title.classList = 'title morning';
+  h1.innerHTML = ' 24/7 Healthcare Assistant';
+} else if (curHr < 18) {
+  title.classList = 'title noon';
+  h1.innerHTML = 'Welcome To Your';
+} else {
+  title.classList = 'title night';
+  h1.innerHTML = 'Welcome To Your 24/7 Healthcare Assistant';
+}
+
+title.addEventListener('click', e => {
+  //if (title.classList.contains('night')) {
+   // title.classList = 'title morning';
+    //h1.innerHTML = 'Healthcare Assistant';
+  //}
+  if (title.classList.contains('morning')) {
+    title.classList = 'title noon';
+    h1.innerHTML = 'Welcome To Your';
+  }
+  else if (title.classList.contains('noon')) {
+    title.classList = 'title night';
+    h1.innerHTML = '24/7 Healthcare Assistant';
+  }
+  
+  window.location.href = "https://quantmbysolexa.simritmangat.repl.co/home.html";
+
+})
+
+</script>
+      </div>
+    </div>
+</div>

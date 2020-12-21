@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="about.css">
+  <link rel="shortcut icon" href="https://media.discordapp.net/attachments/522247603929219074/782661792874496010/Team_Solexa.png" type="image/x-icon">
+	<title>Quantm By Solexa</title>
+</head>
+
+<body>
+<!--Diagnoser, Video Call, Find Healthcare Professionals, Contact, Home (icon)-->
+	<div class="wrapper">
+		<div class="sidebar">
+			<h2>Quantm By Solexa</h2>
+			<ul>
+				<li><a href="dashboard.html"><i class="fas fa-home"></i>Home</a></li>
+        <!--
+            <li><a href="login.html"><i class="fas fa-user"></i>Log In</a></li>
+            -->
+            <li><a href="about.html"><i class="fas fa-address-book"></i></i>About</a></li>
+            <li><a href="diagnosis.html"><i class="fas fa-project-diagram"></i>Diagnosis</a></li>
+            <li><a href="videocall.html"><i class="fas fa-blog"></i>Video Call</a></li>
+            <li><a href="physician.html"><i class="fas fa-address-book"></i>Find a Physician</a></li>
+            <li><a href="contact.html"><i class="fas fa-map-pin"></i>Contact</a></li>
+            <div class="forms-in">
+            <button id="signout">Sign Out</button>
+            
+        </ul> 
+    </div>
+    <style>
+      
+		  /*	.forms-out {
+				margin: 0 auto;
+				font-family: "Montserrat", sans-serif;
+				padding: 15px 0;
+			} */
+
+			.forms-in {
+				width: 100%;
+				margin: 0 auto;
+				color: #2E6FFF;
+				padding: 15 px 0;
+			}
+
+			.forms-in div {
+				padding: 30px 20px;
+				max-width: 350px;
+				margin: 0 auto;
+				background: #f3f5f9;
+				border-radius: 5px;
+				margin-bottom: 15px;
+			}
+
+			.forms-in h3 {
+				text-align: center;
+				font-size: 15px;
+			}
+
+			.forms-in input {
+				border: 0;
+				width: 100%;
+				margin-bottom: 15px;
+				padding: 5px;
+				box-sizing: border-box;
+				border-radius: 3px;
+			}
+
+			.forms-in button {
+				border: none;
+				padding: 7px 20px;
+				background: #2E6FFF;
+				color: white;
+				border-radius: 4px;
+				cursor: pointer;
+				font-weight: bold;
+			}
+
+
+			.forms-in button:hover {
+				opacity: 0.7;
+			}
+
+
+			.hide {
+				display: none;
+			}
+
+
+			#forgot-password {
+				text-align: center;
+				font-size: 13px;
+				cursor: pointer;
+			}
+
+
+
+			#forgot-password:hover {
+				opacity: 0.7;
+			}
+		</style>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use-->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCUs__XYPjx_7BPKS9hB1aVkBHWVpQPtKU",
+    authDomain: "quantm.firebaseapp.com",
+    projectId: "quantm",
+    storageBucket: "quantm.appspot.com",
+    messagingSenderId: "313962922698",
+    appId: "1:313962922698:web:e1689b174d3605540f6a33",
+    measurementId: "G-V28K6MPN6S"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+
+    <script>
+      //invokes firebase authentication.
+      const auth = firebase.auth();
+
+      document.querySelector("#show-register").addEventListener("click", () => {
+        showRegistration();
+      });
+
+      const showRegistration = () => {
+        document.querySelector("#registration-page").classList.remove("hide");
+        document.querySelector("#login-page").classList.add("hide");
+        document.querySelector("#homepage").classList.add("hide");
+      };
+
+      document.querySelector("#show-login").addEventListener("click", () => {
+        showLogin();
+      });
+
+      const showLogin = () => {
+        document.querySelector("#registration-page").classList.add("hide");
+        document.querySelector("#login-page").classList.remove("hide");
+        document.querySelector("#homepage").classList.add("hide");
+      };
+
+      document.querySelector("#signout").addEventListener("click", () => {
+        signOut();
+      });
+
+      const register = () => {
+        const email = document.querySelector("#registration-email").value;
+        const reemail = document.querySelector("#registration-reemail").value;
+        const password = document.querySelector("#registration-password").value;
+
+        if (email.trim() == "") {
+          alert("Enter Email");
+        } else if (password.trim().length < 7) {
+          alert("Password must be at least 7 characters");
+        } else if (email != reemail) {
+          alert("emails do not match");
+        } else {
+          auth
+            .createUserWithEmailAndPassword(email, password)
+            .catch(function (error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              alert(errorMessage);
+              // ...
+            });
+        }
+      };
+
+      document.querySelector("#register").addEventListener("click", () => {
+        register();
+      });
+
+      //register when you hit the enter key
+      document
+        .querySelector("#registration-password")
+        .addEventListener("keyup", (e) => {
+          if (event.keyCode === 13) {
+            e.preventDefault();
+
+            register();
+          }
+        });
+
+      const login = () => {
+        const email = document.querySelector("#login-email").value;
+        const password = document.querySelector("#login-password").value;
+
+        if (email.trim() == "") {
+          alert("Enter Email");
+        } else if (password.trim() == "") {
+          alert("Enter Password");
+        } else {
+          authenticate(email, password);
+        }
+      };
+
+      document.querySelector("#login").addEventListener("click", () => {
+        login();
+      });
+
+      //sign in when you hit enter
+      document
+        .querySelector("#login-password")
+        .addEventListener("keyup", (e) => {
+          if (event.keyCode === 13) {
+            e.preventDefault();
+
+            login();
+          }
+        });
+
+      const authenticate = (email, password) => {
+        const auth = firebase.auth();
+        auth.signInWithEmailAndPassword(email, password);
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
+          });
+      };
+
+      const showHomepage = () => {
+        document.querySelector("#registration-page").classList.add("hide");
+        document.querySelector("#login-page").classList.add("hide");
+        document.querySelector("#homepage").classList.remove("hide");
+      };
+
+      const signOut = () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(function () {
+            location.reload();
+          })
+          .catch(function (error) {
+            alert("error signing out, check network connection");
+          });
+      };
+
+      auth.onAuthStateChanged((firebaseUser) => {
+        if (firebaseUser) {
+          showHomepage();
+        }
+      });
+
+      document
+        .querySelector("#forgot-password")
+        .addEventListener("click", () => {
+          const email = document.querySelector("#login-email").value;
+          if (email.trim() == "") {
+            alert("Enter Email");
+          } else {
+            forgotPassword(email);
+          }
+        });
+
+      const forgotPassword = (email) => {
+        auth
+          .sendPasswordResetEmail(email)
+          .then(function () {
+            alert("email sent");
+          })
+          .catch(function (error) {
+            alert("invalid email or bad network connection");
+          });
+      };
+    </script>
+  
+    <div class="main_content">
+          <section id="about">
+        <div class="about container">
+          <div class="col-left">
+            <div class="about-img">
+              <img src="https://media.discordapp.net/attachments/767485519599894558/775958418241748992/unknown.png?width=516&height=482" alt="img">
+            </div>
+          </div>
+          <div class="col-right">
+            <h1 class="section-title">About <span>US</span></h1>
+            <h2>Bringing Healthcare to YOU</h2>
+            <p><b>Quantum computing algorithms, parallel computing, and an integrated mobile & web application will increase diagnostic accuracy, decrease training time, improve ease of usage, and advance existing telemedicine technologies.</b> </p>
+            <p>Quantm aims to simplify existing approaches to telemedicine by providing an all-in-one utility for both healthcare providers and patients to monitor, track, and consult regarding the progression of an array of conditions. </p>
+            <a href="contact.html" class="cta">Contact</a>
+          </div>
+        </div>
+    </section>
+<!-- End About Section -->
+
+<!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand"><h1><span></span><span></span></h1></div>
+      <h2>solexa 2020</h2>
+        <div class="social-item">
+          <a href="mailto:solexa.quantm@gmail.com"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAilBMVEX///8dHRsQEA1ra2oNDQp3d3cGBgAYGBbw8PA2NjSvr64AAAAbGxkWFhQTExADAwD29vaTk5Ln5+fy8vKmpqXg4OCAgH/Q0NAoKCba2toxMS+fn55kZGNaWlhHR0bq6uqHh4a/v75LS0lSUlG0tLQlJSM/Pz7T09ONjYzHx8ZeXl2hoaCCgoG7u7sUXKf6AAAKCElEQVR4nO2daWOiOhSGATFYEhap1n0dl9rq//97186InIMsCSTIrXk/zoDNQ0JyNhLD0NLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSalhhNNrN+uduO3Tuz3ajKJSHF7ndpWnZhNht0bUplrnsupEMvHDTcajtMbNtYp5Nnc6mbk/2BltqtY8uFrPodtCrA+geiPdsihJ55OBW5os6tO18P/Jop+L7uBvbz248p+zxrgJf2LX/Dx34T57dFZ5xwg5NTTDM8622yE/P7YzO38UAewuCfsAi1ni5mHfaofliOb62CFGSP0JzaogAHWLOZ6OVRBuitsLVcTY3iQMR5wINvA5R0H9k2p+oa2sNTfpTAvqRCryLfQBombNaS6pS9WbX9iWIfd77LskIZ2QxVNnE2houkm5k1oXzpvF9mXCsfpveviyFfev+Nnpjvu7o3mcZZlc3iJrTwL4jki7PDaMg7nZGq5gKzesUxIgsGHFc/xW/u8wfKG+cHO38uFOsr/KrT/erCffU9HR9knuvnEov7sTmtr8VtIOeqPetf2u13Sm7dsJuXcg8niHdFo1iQ5WxMuukH8Rj9NxI02TpHI/ToOTdCg9ePKDbaanlaRJPH96heAWfxG+hNW+oabI0j5cAUtw1g9giJRv8H5H7OZASu5OiaPCZjiRu4mFKi9e4zu1JOG/Y3HanlNApp9mnXJe/rcEkvbfbsm8Vz6bL22toY/Pnm/7c7rXEBBj4P630KDYp487xlkX3rva395UglqHz7/k4ZKagwaKa3Rxfx0R29uA2TNl+VXDzMR7MFjINdvHbyejzEWf3ABI2m0/3qeZYcHf8ujKGHs/s7hGzp5ty/cQfxI97GNsq6UkS6ZLd05fE5382IgA0KZr5kjesaELc3QidKZpKw20SG2Z0raLlnFqDGKe9RWt7b3qbTEmRz+fGhKnFYvLm33/YpJ8q2s6lTxBA8t/w0n5fLkiR255HaBynCSIja+lN59MaDFF/mppQahIakzFApB+y286lDzBE/XHaOKtLaEwOMG73DMQPGOM8PFiftQnTiE3H4MISQAmExvANIPJFtSSqC/IM1ltG1FACoTFEvVgaLpCqDurBrLCoDEJjuLQhYnMDFSVS7GVm3FcKIUYknaZCVe8dUgooidCIDhBRNCtZUe9zCHjIccQlERqrPxBRLCtZUb0/EPBPnm8ki9BYLQCivSjyxeSI9w9KI7z+RfRIVQdvIjRoCp6oPELj/Qu992oRIzS3fRW8+BIJU1Nb5uIkS8MD9+Qtk/CKCNffnNlbhoZLYGMExauTVEK8AmebGDKUMqKKLQy5hFczMQCIUzWIwynswTJDWDah8YEsYRVJjgmy9Ev9NemEZe5abYk6pPIJEaI/lY04mfpCgCoIcdhkXBSHFddxLBoYUkGIQ19TmTnj0VQ4uKeEUBliBUBFhFfEZKB6rLwOgk8nlhTvMt7wrCJCFGX3zKKMAb82JgDkziKoIjT6sBf3MnKolz3sQe40iTJCjMjq14ntWCVAhYTGd1IcaDq0bq2fS8GvWd/8NyokNAY+aJRfD9FFvyWSVVdJiJ97rWQ/elhi40EpIXryjAoMrZS+wTstOhrUEho7OMFXTvbP4KRlCk5aigmNC5wB7WqIMxvOyqILj2pCYwMHql0l2d+34RAVNh6UExqnagv1Xdh0EDcA1RMapzFALCuCfFA/AIDjChZuA4TGCdmTYvUMn8i+rWLCN0F4Hagw2S+CCH0UvxJgM4Qpv46/yngtwc9shhAjkjNfDjU8k/qATREaRzhQOZP9XRjv2VeN9zRFiGqLuD6YC7toiFYOaDVGaEwO4LtHWpoJRzkQp0bctTlC4xt+Al6W7Ed5LNOvUeDRHOFljL/P/SoaqCHMRZo/1deVCzwaI3SBx/9XwSL/t3qLAF9s0qIkaKGaIvwmKcCi1PQKfzF+u7piUrkhQugfJEMvp34C1XWAq6vl6pohhNYlbPQ26+d6oPLYBPdVzJs3QviBghBg0wl7+zj0IgjoA0PBtColshogRPWR3t5FlUwPiAgwmE/g1f5bhXW/AUJYH+ntN9eVAEyU6aoUVEUSXFeU93lN00Y5ISpe8Pc/5nOI69Hg25Wqjwv//kAAf0DYg1JN2PuCSe/bKEONhiUbqMgiiIsszsgLblkkKoIrW5LVT1WlxP88yakigW5iy6KJaNqwQY0yRrz9ByqnRmUyazQZiwXPlRIOpxAQzSkhLLz5N4Eg/yrAhihMRwpGllUSokGXrlZMuX+jVKQjbWnDqLDYN1YKCY+osufRCMWIAwz48GuDoGJkWR0hrAu5rmwZrgG0BBwb+sdZZTKuDyPLa+52KCOEQVKTZLt357SPdHsc2cE4mOUW+HRFFSFfc9bpjcMK+wfmB/Ie2qMUEbomHHT5AdJHxKIBODJhTJJzhys1hAOQ/GVBfpMfHcfiSQTNt0VBAiAlhDCjWTbvzZDryEq+CsfzM1e5vApC2C/lyzNELANMFZdmuZcPUkD4CfJhDkfyPgnhOKT8alTDnvuhDJB8wjWqFOKpKojrGfhqENCHFnZ5FbJswvADrHEOZ7WXa/9MID7nDmIr6EFbpW6/ZMIQOfQer7t6WlJKD7xXh3ORpJtcwvd5RX88PJ6O/FFt5EGXVT5KJUSRXLnFwVjI9/KcQp9YJiGaA2rkwziE4neOV9R2iYQrGCarFtsUEIrBFs1R8gjxQqXwo6ebPqFdEeQvpNIIUw59A3t/Irc/v6BMFmGZQ69C38Brzq/TkUQ4gg698P7LVYWLO9fZF8kh3CCHvrkP8i/w7+aUP0gh3HH8ITXaOOAvB5mPVgYhSmBnhMlUCo0emuX2SyAcEPg2NL1/ywnOAOTrsX31Cb9RrLb5nZRwQdlj4rw2YfVgtCwdsdufRuQjzNnry8AVvM/aem9SaE3x7fWVs18brv90nGftgY3d/lRkg2+/tpw99+Au7VcL/3lbYKJNQFKVj3x77uXsm2jMk2fnOM/c47MHqsQY3hmSb9/EnL0vje19MZL1jWFVwegCRa43396XefuXJltgV6mil6okq8ws5Jry7V+atwdtvL2nP37+Ftj3yIa9gJYN7x60OfsIh/OfuZSRKpU80hV+/M2W2Hv0GvLuI5y3F3TYNwNCqp6rJFuDMSV26uAN3r2g8/fzjlz3+SM0VrQbpBrDvZ/379+T/QX21f/9ZyPA8y2et9esqITOt/j9Z5S8wDkzv/+soBc47+n3n9n1AueuvcDZeb///MMXOMPyBc4hfYGzZI3ffx6w8QJnOhu//1xu4wXOVr8q3HQcaqfnrhaIeTZ1Ohspq3TkdpemZRNit0XXpljmsps+mayOwmi0m/XP3Xbo3J/tRlGbbCwtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0trRfRf5zzzYUAFgiVAAAAAElFTkSuQmCC"/></a>
+        </div>
+      </div>
+      <p></p>
+    </div>
+  </section>
+  <!-- End Footer -->
+      </div>
+    </div>
+</div>
